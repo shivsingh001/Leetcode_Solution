@@ -1,48 +1,33 @@
 class Solution {
 public:
-  string decodeString(string s) {
-  stack<char>st;
-  string ans = "";
-  int len = s.length();
-  for(int i = 0;i < len; i++)
-  {
-      if(s[i] != ']')
-      {
-          st.push(s[i]);
-      }else
-      {
-          string temp = "";
-          while(st.top() != '[')
-          {
-              temp += st.top();
-              st.pop();
-          }
-          st.pop();
-          string num = "";
-          while(st.size() > 0 && isdigit(st.top()))
-          {
-              num += st.top();
-              st.pop();
-          }
-          reverse(num.begin(),num.end());
-          int number = stoi(num);
-          reverse(temp.begin(),temp.end());
-          string copy = "";
-          for(int j = 0;j < number; j++)
-          {
-              for(int k = 0;k < temp.length(); k++)
-              {
-                  st.push(temp[k]);
-              }
-          }
-      }
-  }
-  while(st.size() > 0)
-  {
-      ans += st.top();
-      st.pop();
-  }
-  reverse(ans.begin(),ans.end());
-  return ans;
-  }
+    vector<int> asteroidCollision(vector<int>& ast) {
+        int n = ast.size();
+        stack<int> s;
+        for(int i = 0; i < n; i++) {
+            if(ast[i] > 0 || s.empty()) {
+                s.push(ast[i]);
+            }
+            else {
+                while(!s.empty() and s.top() > 0 and s.top() < abs(ast[i])) {
+                    s.pop();
+                }
+                if(!s.empty() and s.top() == abs(ast[i])) {
+                    s.pop();
+                }
+                else {
+                    if(s.empty() || s.top() < 0) {
+                        s.push(ast[i]);
+                    }
+                }
+            }
+        }
+		// finally we are returning the elements which remains in the stack.
+		// we have to return them in reverse order.
+        vector<int> res(s.size());
+        for(int i = (int)s.size() - 1; i >= 0; i--) {
+            res[i] = s.top();
+            s.pop();
+        }
+        return res;
+    }
 };
