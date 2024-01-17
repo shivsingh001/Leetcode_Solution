@@ -14,7 +14,7 @@ public:
                 ++i;
             }
 
-            // write letter to compressed vector
+        
             chars[ans++] = letter;
 
             // if count is greater than 1, write count as string to compressed vector
