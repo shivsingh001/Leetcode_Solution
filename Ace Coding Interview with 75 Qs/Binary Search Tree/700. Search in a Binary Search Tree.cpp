@@ -18,9 +18,9 @@ public:
         if(root->val==val)
         return root;
         if(val>=root->val)
-        return searchBST(root->right,val);
+        return searchBST(root->right,val); // return value after traversing right bianry tree
         else 
-        return searchBST(root->left,val);
+        return searchBST(root->left,val);  // return value after traversing right bianry tree
 
     }
 };
