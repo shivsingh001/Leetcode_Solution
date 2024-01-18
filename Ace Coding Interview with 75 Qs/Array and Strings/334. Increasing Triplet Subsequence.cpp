@@ -4,9 +4,9 @@ public:
         int i=INT_MAX;
         int j=INT_MAX;
 
-        for(auto k : nums)
+        for(auto k : nums)  
         {
-            if(k<=i)
+            if(k<=i)   
             i=k;
             else if(k<=j)
             j=k;
