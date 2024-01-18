@@ -1,8 +1,8 @@
 class SmallestInfiniteSet {
 public:
-    priority_queue<int, vector<int>, greater<int> >pq;
+    priority_queue<int, vector<int>, greater<int> >pq; //creating min heap
     unordered_set<int>st;
-    SmallestInfiniteSet() {
+    SmallestInfiniteSet() {  
         int i=1;
         while(i<=1000){
             pq.push(i);
